@@ -1,0 +1,68 @@
+<!-- The toolbar of our app -->
+<mat-toolbar color="primary" style="height: 50px;background-color: blue;color: white;">
+  <span>Customers Management Crud App</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="accent" (click)="openAddEditEmployeeDialog()"
+    style="color: black;background-color: white;">ADD Customers</button>
+</mat-toolbar>
+<!-- The body of our app -->
+<div class="main-body">
+  <!-- The filter section -->
+  <mat-form-field aria-haspopup="outline">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+  </mat-form-field>
+  <!-- The Customers details table -->
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
+        <td mat-cell *matCellDef="let row"> {{row.phoneNumber}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
+        <td mat-cell *matCellDef="let row"> {{row.age}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="isActive">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> isActive ?</th>
+        <td mat-cell *matCellDef="let row"> {{row.isActive}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+          <span (click)="openEditForm(row)" class="action-icon" style="margin-right: 5px;">
+            <mat-icon color="primary">edit</mat-icon>
+          </span>
+          <span (click)="deleteEmployee(row.id)" class="action-icon">
+            <mat-icon color="warn">delete</mat-icon>
+          </span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- This row will be shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
