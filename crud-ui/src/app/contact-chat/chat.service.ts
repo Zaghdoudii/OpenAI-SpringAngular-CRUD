@@ -13,7 +13,7 @@ export class ChatService {
 
   chat(userMessage: string): Observable<any> {
     const threadId = sessionStorage.getItem('threadId');
-    return this.http.post<any>(this.baseUrl + '/chat', { message: userMessage, threadId: 'thread_IFypecaMZT1PHaDHgfzekESO' });
+    return this.http.post<any>(this.baseUrl + '/chat', { message: userMessage, threadId: 'thread_JJtV8yiiZ9PVUlrKb8CFQXpp' });
   }
 
   // Create a new thread for the conversation 

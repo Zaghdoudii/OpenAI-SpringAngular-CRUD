@@ -21,7 +21,7 @@ export class AppComponent  implements OnInit {
     'name',
     'phoneNumber',
     'age',
-    'isActive',
+    'active',
     'action',
   ];
  

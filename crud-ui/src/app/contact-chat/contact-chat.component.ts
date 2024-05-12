@@ -57,6 +57,7 @@ export class ContactChatComponent implements OnInit {
     this.chatService.chat(userMessage).subscribe(
       response => {
         this.messages.unshift({ user: 'bot', content: response.response });
+        window.location.reload();
         this.updateSessionStorage();
       }, error => {
         console.error('Error sending message:', error);
