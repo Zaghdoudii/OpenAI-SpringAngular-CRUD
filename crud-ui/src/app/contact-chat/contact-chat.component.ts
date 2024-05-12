@@ -11,8 +11,8 @@ import { ChatService } from './chat.service';
 export class ContactChatComponent implements OnInit {
 
   messages: { user: string, content: string }[] = [
-    { user: 'bot', content: 'Transformez vos idées en microservices fonctionnels en un clin d\'œil avec Grizzly AI !' },
-    { user: 'bot', content: 'Bienvenue sur Grizzly AI ' }
+    { user: 'bot', content: 'How can I assist you today !' },
+    { user: 'bot', content: 'Hello' }
   ];
   queryFormGroup!: FormGroup;
   isFullScreen: boolean = false;

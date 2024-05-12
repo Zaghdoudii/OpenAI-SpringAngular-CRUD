@@ -1,7 +1,7 @@
 <div *ngIf="showWidget">
   <div class="contact-widget" [ngClass]="{'fullscreen': isFullScreen}">
     <div class="card container"
-      [ngStyle]="{ 'max-height': isFullScreen ? '100vh' : '500px', 'width': isFullScreen ? '103%' : '350px', 'height': isFullScreen ? '650px' : '450px', 'max-width': isFullScreen ? '580px' : '500px' }">
+      [ngStyle]="{ 'max-height': isFullScreen ? '100vh' : '500px', 'width': isFullScreen ? '103%' : '350px', 'height': isFullScreen ? '650px' : '450px', 'max-width': isFullScreen ? '580px' : '500px' , 'border': isFullScreen ? 'solid 2px' : 'solid 2px','border-radius': isFullScreen ? '3%' : '3%' ,}">
 
 
       <div class="header row">
@@ -27,14 +27,15 @@
         <div class="message-container">
           <ng-container *ngFor="let message of messages" class="mb-2">
             <div *ngIf="message.user === 'bot'" class="chat-text"
-              style="max-width: 70%;margin-bottom: 5px;align-self: flex-start;">
+              style="max-width: 70%;margin-bottom: 5px;align-self: flex-start;margin-left: 5px;">
               <ng-container *ngFor="let line of message.content.split('\n')">
                 <div [innerHTML]="formatText(line)"></div>
               </ng-container>
             </div>
 
 
-            <div *ngIf="message.user === 'user'" class="alert alert-info d-inline-block" style="align-self: flex-end;">
+            <div *ngIf="message.user === 'user'" class="chat-text"
+              style="align-self: flex-end;margin-bottom: 5px;margin-right: 10px;background-color: cornflowerblue;">
               <ng-container *ngFor="let line of message.content.split('\n')">
                 <div [innerHTML]="formatText(line)"></div>
               </ng-container>
@@ -53,6 +54,7 @@
 
             <div class="col">
               <textarea formControlName="query" class="form-control" placeholder="ask chatbot"
+                style="margin-left: 10px;width: 230px;"
                 (keydown.enter)="handleAskGPT(); $event.preventDefault()"></textarea>
             </div>
 
