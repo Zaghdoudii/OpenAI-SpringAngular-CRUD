@@ -1,0 +1,78 @@
+<div *ngIf="showWidget">
+  <div class="contact-widget" [ngClass]="{'fullscreen': isFullScreen}">
+    <div class="card container"
+      [ngStyle]="{ 'max-height': isFullScreen ? '100vh' : '500px', 'width': isFullScreen ? '103%' : '350px', 'height': isFullScreen ? '650px' : '450px', 'max-width': isFullScreen ? '580px' : '500px' , 'border': isFullScreen ? 'solid 2px' : 'solid 2px','border-radius': isFullScreen ? '3%' : '3%' ,'background-color': isFullScreen ? 'white' : 'white' }">
+
+
+      <div class="header row">
+        <div class="col-4" style="width: 160px;">
+          <img src="../../assets/robot.png" width="35%" style=" margin-left: 30px">
+        </div>
+        <div class="col-8">
+          <button type="button" class="btn closeContactWidget minimizeButton" *ngIf="!isFullScreen"
+            (click)="emitCloseWidget()" style="margin-left: 20px;"> X </button>
+          <br>
+          <p>
+            <Strong>ChatBot</Strong><br>
+            <small><span>Your virtual companion, always ready to help </span></small>
+          </p>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="card-body" style="overflow-y: auto; width:102%;">
+        <div class="message-container">
+          <ng-container *ngFor="let message of messages" class="mb-2">
+            <div *ngIf="message.user === 'bot'" class="chat-text"
+              style="max-width: 70%;margin-bottom: 5px;align-self: flex-start;margin-left: 5px;">
+              <ng-container *ngFor="let line of message.content.split('\n')">
+                <div [innerHTML]="formatText(line)"></div>
+              </ng-container>
+            </div>
+
+
+            <div *ngIf="message.user === 'user'" class="chat-text"
+              style="align-self: flex-end;margin-bottom: 5px;margin-right: 10px;background-color: cornflowerblue;">
+              <ng-container *ngFor="let line of message.content.split('\n')">
+                <div [innerHTML]="formatText(line)"></div>
+              </ng-container>
+            </div>
+
+          </ng-container>
+        </div>
+      </div>
+
+
+
+
+      <div class="card-footer" style="max-height: 100px;background-color: white;">
+        <form [formGroup]="queryFormGroup" (ngSubmit)="handleAskGPT()">
+          <div class="row" style="display: flex;">
+
+            <div class="col">
+              <textarea formControlName="query" class="form-control" placeholder="ask chatbot"
+                style="margin-left: 10px;width: 230px;"
+                (keydown.enter)="handleAskGPT(); $event.preventDefault()"></textarea>
+            </div>
+
+            <div class="col-auto">
+              <button type="submit" class="btn btn-outline-secondary"
+                style="width: 80px; border-radius: 10px;margin-left: 10px;"
+                [disabled]="!queryFormGroup.controls['query'].value" translate>
+                <span class="material-symbols-outlined">
+                  send
+                </span>
+              </button>
+              <link rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

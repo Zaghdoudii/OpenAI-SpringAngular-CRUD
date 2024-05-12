@@ -14,13 +14,14 @@ import { EmployeeService } from './employee.service';
 })
 export class AppComponent  implements OnInit {
   title = 'crud-ui';
+  showWidget = true;
 
   displayedColumns = [
     'id',
     'name',
     'phoneNumber',
     'age',
-    'isActive',
+    'active',
     'action',
   ];
  

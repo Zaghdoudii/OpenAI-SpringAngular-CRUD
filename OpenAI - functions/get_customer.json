@@ -1,0 +1,16 @@
+{
+    "name": "get_customer",
+    "description": "Determine customer by id",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "number",
+                "description": "customer id"
+            }
+        },
+        "required": [
+            "id"
+        ]
+    }
+}

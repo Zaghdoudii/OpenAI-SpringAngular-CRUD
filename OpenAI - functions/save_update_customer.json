@@ -1,0 +1,39 @@
+{
+    "name": "save_update_customer",
+    "description": "This function will determine all the attributes of a new customer or the attributes of an existing customer to be modified.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "number",
+                "description": "customer id"
+            },
+            "name": {
+                "type": "string",
+                "description": "customer name"
+            },
+            "phone_number": {
+                "type": "number",
+                "description": "customer phone number"
+            },
+            "age": {
+                "type": "number",
+                "description": "customer age"
+            },
+            "isActif": {
+                "type": "string",
+                "enum": [
+                    "true",
+                    "false"
+                ]
+            }
+        },
+        "required": [
+            "id",
+            "name",
+            "phone_number",
+            "age",
+            "isActif"
+        ]
+    }
+}

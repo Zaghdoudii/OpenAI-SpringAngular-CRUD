@@ -1,0 +1,16 @@
+{
+    "name": "delete_customer",
+    "description": "Determine the customer that will be deleted by id",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "number",
+                "description": "customer id"
+            }
+        },
+        "required": [
+            "id"
+        ]
+    }
+}
